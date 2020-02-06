@@ -1,0 +1,79 @@
+Jfrog
+------
+
+Upload Artifact to Artifactory with cURL
+-----------------------------------------
+Basic authentication with username and password or username and API Key :
+
+curl -sSf -u "<USERNAME>: <PASSWORD>" \ 
+       -X PUT \ 
+       -T file.zip \ 
+       'http (s): // <ARTIFACTORY_URL> / <REPO> / <PATH> /file.zip'
+	   
+	   
+Upload a file to Artifactory with metadata (properties):
+-----------------------------------------
+
+$ curl -sSf -u "<USERNAME>: <PASSWORD>" \ 
+       -X PUT \ 
+       -T file.zip \ 
+       'http (s): // <ARTIFACTORY_URL> / <REPO> / <PATH> /file.zip; released = true; build.number = 1.0 '
+	   
+	   
+API Key Authentication in HTTP header:
+-----------------------------------------
+
+curl -sSf -H "X-JFrog-Art-Api: <API_KEY>" \ 
+       -X PUT \ 
+       -T file.zip \ 
+       'http (s): // <ARTIFACTORY_URL> / <REPO> / <PATH> / file.zip '
+
+Upload a file to Artifactory with metadata (properties):
+-----------------------------------------
+
+$ curl -sSf -H "X-JFrog-Art-Api: <API_KEY>" \ 
+       -X PUT \ 
+       -T file.zip \ 
+       'http (s): // <ARTIFACTORY_URL> / <REPO> / <PATH> / file.zip; released = true; build.number = 1.0 '
+	   
+	   
+Option	Description
+-----------------------------------------
+
+-s, --silent	Do not show progress and error messages
+-S, --show-error	When used with -s, --silent, makes sure that it curldisplays error messages if they occur
+-f, --fail	Returns an error if the HTTP response code is other than 200
+-H, --header <header>	Optional HTTP header to include in request
+-u, --user <username:password>	Username and password for server authentication
+-X, --request PUT	Submit PUTRequest
+-T, --upload-file <file>	Local file for sending by URL
+
+
+
+Reference : https://www.shellhacks.com/ru/jfrog-artifactory-upload-file-curl/
+
+
+Download Artifact  https://www.shellhacks.com/ru/jfrog-artifactory-download-artifact-using-curl/
+
+Basic authentication with username and password or username and API Key :
+
+$ curl -sSf -u "<USERNAME>:<PASSWORD>" \
+       -O 'http(s)://<ARTIFACTORY_URL>/<REPO>/<PATH>/file.zip'
+	   
+	   
+	   
+API Key Authentication in HTTP header:
+
+$ curl -sSf -H "X-JFrog-Art-Api:<API_KEY>" \
+       -O 'http(s)://<ARTIFACTORY_URL>/<REPO>/<PATH>/file.zip'
+	   
+Option	Description
+-----------------------------------------
+
+-s, --silent	Do not show progress and error messages
+-S, --show-error	When used with -s, --silent, makes sure that it curldisplays error messages if they occur
+-f, --fail	Returns an error if the HTTP response code is other than 200
+-H, --header <header>	Optional HTTP header to include in request
+-u, --user <username:password>	Username and password for server authentication
+-O, --remote-name	Save locally with the same name
+
